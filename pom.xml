@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <!-- Netcetera Parent POM -->
+  <parent>
+    <groupId>com.netcetera.nca-301-5.maven.pom</groupId>
+    <artifactId>nca-parent</artifactId>
+    <version>8.9</version>
+  </parent>
+
+  <groupId>com.netcetera</groupId>
+  <artifactId>magnolia-auto-config-updates</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+
+  <name>magnolia-auto-config-updates</name>
+  <description>Automatic configuration updates for Magnolia Installations.</description>
+
+  <scm>
+    <connection>scm:git:https://github.com/netceteragroup/magnolia-auto-config-updates.git</connection>
+    <url>https://github.com/netceteragroup/magnolia-auto-config-updates.git</url>
+  </scm>
+
+  <!-- Maven build properties -->
+  <properties>
+    <nca.project.id>-</nca.project.id>
+    <jdk.version>1.8</jdk.version>
+    <lifecycle-mapping.version>1.0.0</lifecycle-mapping.version>
+
+    <!--  Magnolia -->
+    <magnolia.core.version>5.7</magnolia.core.version>
+  </properties>
+
+  <dependencies>
+    <!-- Magnolia -->
+    <dependency>
+      <groupId>info.magnolia</groupId>
+      <artifactId>magnolia-core</artifactId>
+      <version>${magnolia.core.version}</version>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
+</project>
