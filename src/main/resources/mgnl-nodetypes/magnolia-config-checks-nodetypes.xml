@@ -3,7 +3,7 @@
   xmlns:mgnl="http://www.magnolia.info/jcr/mgnl" xmlns:jcr="http://www.jcp.org/jcr/1.0">
 
   <!-- custom node types -->
-  <nodeType name="config-check" isMixin="false" hasOrderableChildNodes="true" primaryItemName="">
+  <nodeType name="config-definition" isMixin="false" hasOrderableChildNodes="true" primaryItemName="">
     <supertypes>
       <supertype>mgnl:content</supertype>
     </supertypes>

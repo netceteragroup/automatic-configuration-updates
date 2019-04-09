@@ -1,5 +1,5 @@
-defaultAction: editConfigCheck
-label: Config Check
+defaultAction: editConfigDefinition
+label: Config Checks
 sections:
   - name: root
     label: Config Checks
@@ -10,24 +10,24 @@ sections:
     groups:
       - name: addActions
         items:
-          - name: addConfigCheck
+          - name: addConfigDefinition
 #TO-DO
 #    - name: runConfigChecks
 #  - name: importAction
 #    items:
 #    - name: import
-  - name: config-check
-    label: Config Check
+  - name: config-definition
+    label: Config Definition
     availability:
       multiple: false
       nodes: true
       root: true
       nodeTypes:
-        config-check: config-check
+        config-definition: config-definition
     groups:
       - name: addActions
         items:
           - name: confirmDeletion
       - name: editActions
         items:
-          - name: editConfigCheck
+          - name: editConfigDefinition

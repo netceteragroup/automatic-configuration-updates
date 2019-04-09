@@ -1,0 +1,7 @@
+icon: icon-show-changes
+appClass: com.netcetera.magnolia.auto.config.updates.contentApp.MultipleTabsContentApp
+class: info.magnolia.ui.contentapp.ContentAppDescriptor
+label: Config Updates
+subApps:
+  browserConfigDefinition: !include:/magnolia-auto-config-updates/apps-common/config-checks/subApps/subAppBrowserConfigDefinition.yaml
+  browserConfigEmail: !include:/magnolia-auto-config-updates/apps-common/config-checks/subApps/subAppBrowserConfigEmail.yaml

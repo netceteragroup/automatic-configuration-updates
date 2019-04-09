@@ -1,7 +1,0 @@
-icon: icon-show-changes
-appClass: com.netcetera.magnolia.auto.config.updates.contentapp.ConfigChecksApp
-class: info.magnolia.ui.contentapp.ContentAppDescriptor
-label: Config Checks
-subApps:
-  browserConfigCheck: !include:/magnolia-auto-config-updates/apps-common/config-checks/subApps/subAppBrowserConfigCheck.yaml
-  browserEmailCheck: !include:/magnolia-auto-config-updates/apps-common/config-checks/subApps/subAppBrowserConfigEmail.yaml

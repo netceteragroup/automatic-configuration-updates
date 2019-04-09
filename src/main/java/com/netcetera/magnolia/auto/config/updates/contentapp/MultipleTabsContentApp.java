@@ -1,4 +1,4 @@
-package com.netcetera.magnolia.auto.config.updates.contentapp;
+package com.netcetera.magnolia.auto.config.updates.contentApp;
 
 import com.google.common.collect.Lists;
 import info.magnolia.ui.api.app.AppContext;
@@ -17,11 +17,11 @@ import java.util.List;
 /**
  * The Config Checks that extends ContentApp and opens its' SubApps in separate tabs.
  */
-public class ConfigChecksApp extends ContentApp {
+public class MultipleTabsContentApp extends ContentApp {
 
   //CHECKSTYLE:OFF
   @Inject
-  public ConfigChecksApp(AppContext appContext, AppView view) {
+  public MultipleTabsContentApp(AppContext appContext, AppView view) {
     // CHECKSTYLE:ON
     super(appContext, view);
   }

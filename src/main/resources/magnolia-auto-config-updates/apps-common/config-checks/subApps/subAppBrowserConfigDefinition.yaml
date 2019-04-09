@@ -1,0 +1,14 @@
+label: Config Definitions
+subAppClass: info.magnolia.ui.contentapp.browser.BrowserSubApp
+class: info.magnolia.ui.contentapp.browser.BrowserSubAppDescriptor
+closable: false
+workbench: !include:/magnolia-auto-config-updates/apps-common/config-checks/workbench-definition-configDefinition.yaml
+contentConnector:
+  workspace: config-checks
+  defaultOrder: jcrName
+  rootPath: /config-definition
+  nodeTypes:
+  - icon: icon-file-webpage
+    name: config-definition
+actions: !include:/magnolia-auto-config-updates/apps-common/config-checks/subApps/actions/configDefinitionActions.yaml
+actionbar: !include:/magnolia-auto-config-updates/apps-common/config-checks/subApps/actions/configDefinitionActionbar.yaml
