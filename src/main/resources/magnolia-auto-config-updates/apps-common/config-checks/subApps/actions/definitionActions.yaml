@@ -1,10 +1,10 @@
 delete: !include:/magnolia-auto-config-updates/apps-common/config-checks/subApps/actions/delete.yaml
 confirmDeletion: !include:/magnolia-auto-config-updates/apps-common/config-checks/subApps/actions/confirmDeletion.yaml
-addConfigDefinition:
-  dialogName: magnolia-auto-config-updates:components/configDefinitionDetail
-  label: Add Config Definition
+addDefinition:
+  dialogName: magnolia-auto-config-updates:components/definitionDetail
+  label: Add Definition
   icon: icon-add-item
-  nodeType: config-definition
+  nodeType: definition
   class: info.magnolia.ui.framework.action.OpenCreateDialogActionDefinition
   availability:
     multiple: false
@@ -12,15 +12,15 @@ addConfigDefinition:
     rules:
     - name: IsNotDeletedRule
       implementationClass: info.magnolia.ui.framework.availability.IsNotDeletedRule
-editConfigDefinition:
-  dialogName: magnolia-auto-config-updates:components/configDefinitionDetail
-  label: Edit Config Definition
+editDefinition:
+  dialogName: magnolia-auto-config-updates:components/definitionDetail
+  label: Edit Definition
   icon: icon-edit
   class: info.magnolia.ui.framework.action.OpenEditDialogActionDefinition
-  nodeType: config-definition
+  nodeType: definition
   availability:
     nodeTypes:
-      config-definition: config-definition
+      definition: definition
     multiple: false
     root: false
     rules:

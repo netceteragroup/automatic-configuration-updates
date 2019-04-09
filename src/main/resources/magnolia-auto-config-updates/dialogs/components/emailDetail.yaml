@@ -1,8 +1,8 @@
-label: Config Email
+label: Email
 form:
   tabs:
     - name: mainTab
-      label: Config Email
+      label: Email
       fields:
         - name: name
           label: Name

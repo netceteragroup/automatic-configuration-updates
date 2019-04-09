@@ -1,10 +1,10 @@
 delete: !include:/magnolia-auto-config-updates/apps-common/config-checks/subApps/actions/delete.yaml
 confirmDeletion: !include:/magnolia-auto-config-updates/apps-common/config-checks/subApps/actions/confirmDeletion.yaml
-addConfigEmail:
-  dialogName: magnolia-auto-config-updates:components/configEmailDetail
-  label: Add Config Email
+addEmail:
+  dialogName: magnolia-auto-config-updates:components/emailDetail
+  label: Add Email
   icon: icon-add-item
-  nodeType: config-email
+  nodeType: email
   class: info.magnolia.ui.framework.action.OpenCreateDialogActionDefinition
   availability:
     multiple: false
@@ -12,15 +12,15 @@ addConfigEmail:
     rules:
     - name: IsNotDeletedRule
       implementationClass: info.magnolia.ui.framework.availability.IsNotDeletedRule
-editConfigEmail:
-  dialogName: magnolia-auto-config-updates:components/configEmailDetail
-  label: Edit Config Email
+editEmail:
+  dialogName: magnolia-auto-config-updates:components/emailDetail
+  label: Edit Email
   icon: icon-edit
-  nodeType: config-email
+  nodeType: email
   class: info.magnolia.ui.framework.action.OpenEditDialogActionDefinition
   availability:
     nodeTypes:
-      config-email: config-email
+      email: email
     multiple: false
     root: false
     rules:

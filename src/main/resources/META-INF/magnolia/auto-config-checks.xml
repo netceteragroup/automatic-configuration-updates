@@ -17,7 +17,7 @@
     <repository>
       <name>magnolia</name>
       <workspaces>
-        <workspace>config-checks</workspace>
+        <workspace>advancedConfigUpdates</workspace>
       </workspaces>
       <nodeTypeFile>/mgnl-nodetypes/magnolia-config-checks-nodetypes.xml</nodeTypeFile>
     </repository>

@@ -1,8 +1,8 @@
-label: Config Definition
+label: Definition
 form:
   tabs:
     - name: mainTab
-      label: Config Definition
+      label: Definition
       fields:
         - name: name
           label: Name

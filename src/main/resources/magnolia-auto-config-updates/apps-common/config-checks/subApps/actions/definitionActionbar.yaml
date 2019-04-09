@@ -1,8 +1,8 @@
-defaultAction: editConfigCheck
-label: Config Check
+defaultAction: editDefinition
+label: Definition
 sections:
   - name: root
-    label: Config Checks
+    label: Definition
     availability:
       multiple: false
       nodes: false
@@ -10,24 +10,24 @@ sections:
     groups:
       - name: addActions
         items:
-          - name: addConfigEmail
+          - name: addDefinition
 #TO-DO
 #    - name: runConfigChecks
 #  - name: importAction
 #    items:
 #    - name: import
-  - name: config-email
-    label: Config Email
+  - name: definition
+    label: Definition
     availability:
       multiple: false
       nodes: true
       root: true
       nodeTypes:
-        config-email: config-email
+        config-definition: definition
     groups:
       - name: addActions
         items:
           - name: confirmDeletion
       - name: editActions
         items:
-          - name: editConfigEmail
+          - name: editDefinition
