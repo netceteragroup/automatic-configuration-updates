@@ -1,0 +1,80 @@
+dropConstraintClass: info.magnolia.ui.workbench.tree.drop.AlwaysTrueDropConstraint
+contentViews:
+  - name: tree
+    class: info.magnolia.ui.workbench.tree.TreePresenterDefinition
+    columns:
+      - name: path
+        label: Path
+        propertyName: path
+        class: info.magnolia.ui.workbench.column.definition.PropertyColumnDefinition
+      - name: propertyName
+        label: Property Name
+        class: info.magnolia.ui.workbench.column.definition.PropertyColumnDefinition
+        propertyName: propertyName
+      - name: propertyValue
+        label: Property Value
+        propertyName: propertyValue
+        class: info.magnolia.ui.workbench.column.definition.PropertyColumnDefinition
+      - name: status
+        label: Status
+        formatterClass: info.magnolia.ui.workbench.column.StatusColumnFormatter
+        width: 46
+        class: info.magnolia.ui.workbench.column.definition.StatusColumnDefinition
+      - name: scanDate
+        label: Scan Date
+        propertyName: scanDate
+        width: 160
+        class: info.magnolia.ui.workbench.column.definition.PropertyColumnDefinition
+        formatterClass: info.magnolia.ui.workbench.column.DateColumnFormatter
+  - name: list
+    class: info.magnolia.ui.workbench.list.ListPresenterDefinition
+    columns:
+      - name: path
+        label: Path
+        propertyName: path
+        class: info.magnolia.ui.workbench.column.definition.PropertyColumnDefinition
+      - name: propertyName
+        label: Property Name
+        class: info.magnolia.ui.workbench.column.definition.PropertyColumnDefinition
+        propertyName: propertyName
+      - name: propertyValue
+        label: Property Value
+        propertyName: propertyValue
+        class: info.magnolia.ui.workbench.column.definition.PropertyColumnDefinition
+      - name: status
+        label: Status
+        formatterClass: info.magnolia.ui.workbench.column.StatusColumnFormatter
+        width: 46
+        class: info.magnolia.ui.workbench.column.definition.StatusColumnDefinition
+      - name: scanDate
+        label: Scan Date
+        propertyName: scanDate
+        width: 160
+        class: info.magnolia.ui.workbench.column.definition.PropertyColumnDefinition
+        formatterClass: info.magnolia.ui.workbench.column.DateColumnFormatter
+  - name: search
+    class: info.magnolia.ui.workbench.search.SearchPresenterDefinition
+    columns:
+      - name: path
+        label: Path
+        propertyName: path
+        class: info.magnolia.ui.workbench.column.definition.PropertyColumnDefinition
+      - name: propertyName
+        label: Property Name
+        class: info.magnolia.ui.workbench.column.definition.PropertyColumnDefinition
+        propertyName: propertyName
+      - name: propertyValue
+        label: Property Value
+        propertyName: propertyValue
+        class: info.magnolia.ui.workbench.column.definition.PropertyColumnDefinition
+      - name: status
+        label: Status
+        formatterClass: info.magnolia.ui.workbench.column.StatusColumnFormatter
+        width: 46
+        class: info.magnolia.ui.workbench.column.definition.StatusColumnDefinition
+      - name: scanDate
+        label: Scan Date
+        propertyName: scanDate
+        width: 160
+        class: info.magnolia.ui.workbench.column.definition.PropertyColumnDefinition
+        formatterClass: info.magnolia.ui.workbench.column.DateColumnFormatter

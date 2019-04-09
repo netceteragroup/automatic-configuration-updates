@@ -1,0 +1,18 @@
+form:
+  tabs:
+    - name: mainTab
+      label: Config Check
+      fields:
+        - name: name
+          label: Name
+          class: info.magnolia.ui.form.field.definition.TextFieldDefinition
+        - name: path
+          label: Path
+          class: info.magnolia.ui.form.field.definition.TextFieldDefinition
+        - name: propertyName
+          label: Property Name
+          class: info.magnolia.ui.form.field.definition.TextFieldDefinition
+        - name: propertyValue
+          label: Property Value
+          class: info.magnolia.ui.form.field.definition.TextFieldDefinition
+actions: !include:/magnolia-auto-config-updates/apps-common/config-checks/subApps/actions/detail-subapp-actions.yaml

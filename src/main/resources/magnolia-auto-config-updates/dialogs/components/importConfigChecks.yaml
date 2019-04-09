@@ -1,0 +1,16 @@
+actions:
+  cancel:
+    class: info.magnolia.ui.dialog.action.CancelDialogActionDefinition
+  commit:
+    command: importConfigChecks
+    class: info.magnolia.ui.dialog.action.SaveImportDialogActionDefinition
+form:
+  tabs:
+    - name: import
+      fields:
+        - name: name
+          label: Upload CSV file
+          binaryNodeName: import
+          preview: false
+          required: true
+          class: info.magnolia.ui.form.field.definition.BasicUploadFieldDefinition

@@ -1,0 +1,12 @@
+form:
+  tabs:
+    - name: mainTab
+      label: Config Email
+      fields:
+        - name: name
+          label: Name
+          class: info.magnolia.ui.form.field.definition.TextFieldDefinition
+        - name: email
+          label: E-mail
+          class: info.magnolia.ui.form.field.definition.TextFieldDefinition
+actions: !include:/magnolia-auto-config-updates/apps-common/config-checks/subApps/actions/detail-subapp-actions.yaml

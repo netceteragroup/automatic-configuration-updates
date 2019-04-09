@@ -1,0 +1,68 @@
+dropConstraintClass: info.magnolia.ui.workbench.tree.drop.AlwaysTrueDropConstraint
+contentViews:
+  - name: tree
+    class: info.magnolia.ui.workbench.tree.TreePresenterDefinition
+    columns:
+      - name: name
+        label: Name
+        propertyName: name
+        class: info.magnolia.ui.workbench.column.definition.PropertyColumnDefinition
+      - name: email
+        label: E-mail
+        class: info.magnolia.ui.workbench.column.definition.PropertyColumnDefinition
+        propertyName: email
+      - name: status
+        label: Status
+        formatterClass: info.magnolia.ui.workbench.column.StatusColumnFormatter
+        width: 46
+        class: info.magnolia.ui.workbench.column.definition.StatusColumnDefinition
+      - name: scanDate
+        label: Scan Date
+        propertyName: scanDate
+        width: 160
+        class: info.magnolia.ui.workbench.column.definition.PropertyColumnDefinition
+        formatterClass: info.magnolia.ui.workbench.column.DateColumnFormatter
+  - name: list
+    class: info.magnolia.ui.workbench.list.ListPresenterDefinition
+    columns:
+      - name: name
+        label: Name
+        propertyName: name
+        class: info.magnolia.ui.workbench.column.definition.PropertyColumnDefinition
+      - name: email
+        label: E-mail
+        class: info.magnolia.ui.workbench.column.definition.PropertyColumnDefinition
+        propertyName: email
+      - name: status
+        label: Status
+        formatterClass: info.magnolia.ui.workbench.column.StatusColumnFormatter
+        width: 46
+        class: info.magnolia.ui.workbench.column.definition.StatusColumnDefinition
+      - name: scanDate
+        label: Scan Date
+        propertyName: scanDate
+        width: 160
+        class: info.magnolia.ui.workbench.column.definition.PropertyColumnDefinition
+        formatterClass: info.magnolia.ui.workbench.column.DateColumnFormatter
+  - name: search
+    class: info.magnolia.ui.workbench.search.SearchPresenterDefinition
+    columns:
+      - name: name
+        label: Name
+        propertyName: name
+        class: info.magnolia.ui.workbench.column.definition.PropertyColumnDefinition
+      - name: email
+        label: E-mail
+        class: info.magnolia.ui.workbench.column.definition.PropertyColumnDefinition
+        propertyName: email
+      - name: status
+        label: Status
+        formatterClass: info.magnolia.ui.workbench.column.StatusColumnFormatter
+        width: 46
+        class: info.magnolia.ui.workbench.column.definition.StatusColumnDefinition
+      - name: scanDate
+        label: Scan Date
+        propertyName: scanDate
+        width: 160
+        class: info.magnolia.ui.workbench.column.definition.PropertyColumnDefinition
+        formatterClass: info.magnolia.ui.workbench.column.DateColumnFormatter

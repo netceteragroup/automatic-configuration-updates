@@ -1,0 +1,33 @@
+defaultAction: editConfigCheck
+label: Config Check
+sections:
+  - name: root
+    label: Config Checks
+    availability:
+      multiple: false
+      nodes: false
+      root: true
+    groups:
+      - name: addActions
+        items:
+          - name: addConfigEmail
+#TO-DO
+#    - name: runConfigChecks
+#  - name: importAction
+#    items:
+#    - name: import
+  - name: config-email
+    label: Config Email
+    availability:
+      multiple: false
+      nodes: true
+      root: true
+      nodeTypes:
+        config-email: config-email
+    groups:
+      - name: addActions
+        items:
+          - name: confirmDeletion
+      - name: editActions
+        items:
+          - name: editConfigEmail

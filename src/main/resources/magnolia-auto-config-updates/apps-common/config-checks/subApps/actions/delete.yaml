@@ -1,0 +1,7 @@
+label: Delete
+command: markAsDeleted
+icon: icon-delete
+class: info.magnolia.ui.framework.action.MarkNodeAsDeletedActionDefinition
+availability:
+  multiple: false
+  root: false

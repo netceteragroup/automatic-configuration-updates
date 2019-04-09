@@ -1,0 +1,14 @@
+label: Config Emails
+subAppClass: info.magnolia.ui.contentapp.browser.BrowserSubApp
+class: info.magnolia.ui.contentapp.browser.BrowserSubAppDescriptor
+closable: false
+workbench: !include:/magnolia-auto-config-updates/apps-common/config-checks/workbench-definition-configEmail.yaml
+contentConnector:
+  workspace: config-checks
+  defaultOrder: jcrName
+  rootPath: /config-email
+  nodeTypes:
+  - icon: icon-file-webpage
+    name: config-email
+actions: !include:/magnolia-auto-config-updates/apps-common/config-checks/subApps/actions/configEmailActions.yaml
+actionbar: !include:/magnolia-auto-config-updates/apps-common/config-checks/subApps/actions/configEmailActionbar.yaml

@@ -1,0 +1,9 @@
+icon: icon-delete
+successActionName: delete
+class: info.magnolia.ui.framework.action.ConfirmationActionDefinition
+availability:
+  multiple: true
+  root: true
+  rules:
+    - name: IsNotDeletedRule
+      implementationClass: info.magnolia.ui.framework.availability.IsNotDeletedRule

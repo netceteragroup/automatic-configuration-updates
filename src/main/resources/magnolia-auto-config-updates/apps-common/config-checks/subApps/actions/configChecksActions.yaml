@@ -1,0 +1,48 @@
+delete: !include:/magnolia-auto-config-updates/apps-common/config-checks/subApps/actions/delete.yaml
+confirmDeletion: !include:/magnolia-auto-config-updates/apps-common/config-checks/subApps/actions/confirmDeletion.yaml
+addConfigCheck:
+  dialogName: magnolia-auto-config-updates:components/configCheckDetail
+  label: Add Config Check
+  icon: icon-add-item
+  nodeType: config-check
+  class: info.magnolia.ui.framework.action.OpenCreateDialogActionDefinition
+  availability:
+    multiple: false
+    root: true
+    rules:
+    - name: IsNotDeletedRule
+      implementationClass: info.magnolia.ui.framework.availability.IsNotDeletedRule
+editConfigCheck:
+  dialogName: magnolia-auto-config-updates:components/configCheckDetail
+  label: Edit Config Check
+  icon: icon-edit
+  class: info.magnolia.ui.framework.action.OpenEditDialogActionDefinition
+  nodeType: config-check
+  availability:
+    nodeTypes:
+      config-check: config-check
+    multiple: false
+    root: false
+    rules:
+    - name: IsNotDeletedRule
+      implementationClass: info.magnolia.ui.framework.availability.IsNotDeletedRule
+# TO-DO
+#
+#
+#runConfigChecks:
+#  command: runConfigChecks
+#  icon: icon-redo
+#  class: com.netcetera.data.RunConfigurationChecksActionDefinition
+#  availability:
+#    root: true
+#import:
+#  icon: icon-import
+#  dialogName: magnolia-auto-config-updates:components/importConfigChecks
+#  class: info.magnolia.ui.framework.action.OpenCreateDialogActionDefinition
+#  availability:
+#    multiple: false
+#    writePermissionRequired: true
+#    root: true
+#    rules:
+#    - name: IsNotDeletedRule
+#      implementationClass: info.magnolia.ui.framework.availability.IsNotDeletedRule
