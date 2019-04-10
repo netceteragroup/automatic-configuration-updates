@@ -6,7 +6,7 @@ workbench: !include:/magnolia-auto-config-updates/apps-common/config-checks/work
 contentConnector:
   workspace: advancedConfigUpdates
   defaultOrder: jcrName
-  rootPath: /email
+  rootPath: /emails
   nodeTypes:
   - icon: icon-file-webpage
     name: email

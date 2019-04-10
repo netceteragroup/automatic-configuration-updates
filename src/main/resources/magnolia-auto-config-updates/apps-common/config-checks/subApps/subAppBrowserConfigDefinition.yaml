@@ -6,7 +6,7 @@ workbench: !include:/magnolia-auto-config-updates/apps-common/config-checks/work
 contentConnector:
   workspace: advancedConfigUpdates
   defaultOrder: jcrName
-  rootPath: /definition
+  rootPath: /definitions
   nodeTypes:
   - icon: icon-file-webpage
     name: definition

@@ -1,5 +1,5 @@
 icon: icon-show-changes
-appClass: com.netcetera.magnolia.auto.config.updates.contentApp.MultipleTabsContentApp
+appClass: com.netcetera.magnolia.auto.config.updates.apps.MultipleTabsContentApp
 class: info.magnolia.ui.contentapp.ContentAppDescriptor
 label: Config Updates
 subApps:

@@ -1,4 +1,4 @@
-package com.netcetera.magnolia.auto.config.updates.contentApp;
+package com.netcetera.magnolia.auto.config.updates.apps;
 
 import com.google.common.collect.Lists;
 import info.magnolia.ui.api.app.AppContext;

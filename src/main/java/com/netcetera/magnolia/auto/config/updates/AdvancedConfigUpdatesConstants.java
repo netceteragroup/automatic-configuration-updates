@@ -12,6 +12,7 @@ public class AdvancedConfigUpdatesConstants {
      * Node type name.
      */
     public static final String NODE_TYPE = "definition";
+    public static final String ROOT_PATH = "definitions";
 
     public static class Property {
       /**
@@ -38,6 +39,7 @@ public class AdvancedConfigUpdatesConstants {
      * Node type name.
      */
     public static final String NODE_TYPE = "email";
+    public static final String ROOT_PATH = "emails";
 
     public static class Property {
       /**
