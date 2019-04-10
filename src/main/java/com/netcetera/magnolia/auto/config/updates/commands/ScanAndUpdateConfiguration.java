@@ -1,6 +1,7 @@
 package com.netcetera.magnolia.auto.config.updates.commands;
 
 import com.netcetera.magnolia.auto.config.updates.AdvancedConfigUpdatesConstants;
+import com.netcetera.magnolia.auto.config.updates.util.ContentUtil;
 import info.magnolia.commands.MgnlCommand;
 import info.magnolia.context.Context;
 import info.magnolia.context.MgnlContext;
@@ -16,6 +17,9 @@ import org.slf4j.LoggerFactory;
 import javax.jcr.Node;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 
 import static info.magnolia.repository.RepositoryConstants.CONFIG;
 
@@ -25,77 +29,61 @@ import static info.magnolia.repository.RepositoryConstants.CONFIG;
 public class ScanAndUpdateConfiguration extends MgnlCommand {
 
 	private final Logger logger = LoggerFactory.getLogger(ScanAndUpdateConfiguration.class);
-	private boolean status;
 
 	@Override
 	public boolean execute(Context context) throws Exception {
-		status = true;
-		Session session = MgnlContext.getJCRSession(AdvancedConfigUpdatesConstants.WORKSPACE);
+
+		List<Node> listOfUpdatedNodes = new ArrayList<>();
+		Session session = getSession(AdvancedConfigUpdatesConstants.WORKSPACE);
 		Node root = session.getNode(AdvancedConfigUpdatesConstants.Definition.ROOT_PATH);
-
-
-		//get path property value from config-checks node.
-		//find the node in config workspace
-		//scan
-		//update if necessary.
-
-		//emails to be sent!
-//
 		NodeUtil.collectAllChildren(root, new NodeTypePredicate(AdvancedConfigUpdatesConstants.Definition.NODE_TYPE))
+						.forEach(configNode -> scanAndUpdate(listOfUpdatedNodes, configNode));
 
-
-						.forEach(this::scanAndUpdate);
-
-		return status;
+//		if (!nodes.isEmpty()) {
+//			//send the email(s)
+//		}
+		return listOfUpdatedNodes.isEmpty();
 	}
 
-	private void scanAndUpdate(Node configDefinition) {
+	private void scanAndUpdate(List<Node> listOfUpdatedNodes, Node configDefinition) {
 		String path = PropertyUtil.getString(configDefinition, AdvancedConfigUpdatesConstants.Definition.Property.PATH);
-		Node configNode = getNodeFromConfigurationWorkspaceFor(path);
+		Node configNode = getOrCreateNodeInConfigWorkspaceGiven(path);
 		String propertyName = PropertyUtil.getString(configDefinition,
-		                                             AdvancedConfigUpdatesConstants.Definition.Property.PROPERTY_NAME);
+		                                            AdvancedConfigUpdatesConstants.Definition.Property.PROPERTY_NAME);
 		String propertyValue = PropertyUtil.getString(configDefinition,
 		                                              AdvancedConfigUpdatesConstants.Definition.Property.PROPERTY_VALUE);
-		if (configNode != null) {
 
-			if (shouldUpdate(configNode, propertyName, propertyValue)) {
-				try {
-					PropertyUtil.setProperty(configNode, propertyName, propertyValue);
-					PropertyUtil.setProperty(configDefinition, NodeTypes.Activatable.ACTIVATION_STATUS, true);
-					status = true;
-				} catch (RepositoryException e) {
-					logger.debug("Could not get node for path {}. Reason {}", path, e.getMessage());
-					status = false;
-				}
+		if (shouldUpdateConfiguration(configNode, propertyName, propertyValue)) {
+			try {
+				PropertyUtil.setProperty(configNode, propertyName, propertyValue);
+				PropertyUtil.setProperty(configDefinition, NodeTypes.Activatable.ACTIVATION_STATUS, true);
+				PropertyUtil.setProperty(configDefinition, AdvancedConfigUpdatesConstants.Definition.Property.SCAN_DATE,
+				                         Calendar.getInstance());
+				getSession(RepositoryConstants.CONFIG).save();
+				listOfUpdatedNodes.add(configNode);
+			} catch (RepositoryException e) {
+				logger.debug("Could not get node for path {}. Reason {}", path, e.getMessage());
 			}
-		} else {
-			final Node node = NodeUtil.createPath(SessionUtil.getNode(CONFIG, "/"),
-			                                            path, NodeTypes.Content.NAME, true);
-			PropertyUtil.setProperty(node, propertyName, propertyValue);
-			PropertyUtil.setProperty(node, NodeTypes.Activatable.ACTIVATION_STATUS, true);
-			status = true;
-
 		}
-
-		getConfigSession().save();
-
 	}
 
-	private boolean shouldUpdate(Node configNode, String propertyName, String propertyValue) {
-		return !PropertyUtil.getString(configNode, propertyName).equals(propertyValue);
+	private boolean shouldUpdateConfiguration(Node configNode, String propertyName, String propertyValue) {
+		return configNode != null && !propertyValue.equals(PropertyUtil.getString(configNode, propertyName));
 	}
 
-	private Node getNodeFromConfigurationWorkspaceFor(String path) {
+	private Node getOrCreateNodeInConfigWorkspaceGiven(String path) {
 		try {
-			return getConfigSession().getNode(path);
+			return ContentUtil.getOrCreateChildNode(SessionUtil.getNode(CONFIG, "/"),
+			                                        path, NodeTypes.Content.NAME);
 		} catch (RepositoryException e) {
-			logger.debug("Could not get node for path {}. Reason {}", path, e.getMessage());
+			logger.error("Could not get or create node given path {}. Reason {}", path, e.getMessage());
 			return null;
 		}
 	}
 
-	private Session getConfigSession() throws RepositoryException{
- 		return MgnlContext.getJCRSession(RepositoryConstants.CONFIG);
+	private Session getSession(String name) throws RepositoryException {
+		return MgnlContext.getJCRSession(name);
 	}
 
 }
+

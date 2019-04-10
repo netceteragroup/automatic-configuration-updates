@@ -13,8 +13,7 @@ import org.junit.jupiter.api.Test;
 
 import javax.jcr.RepositoryException;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 /**
@@ -61,11 +60,10 @@ public class ScanAndUpdateConfigurationTest {
 	@Test
 	 void shouldCreateNodeOrPropertyInConfigWorkspace() throws Exception {
 		//given
-		createAdvancedConfigDefinitionNode("activeVersion", "/server/version", "active", "true");
+		createAdvancedConfigDefinitionNode("activeVersion", "server/version", "active", "true");
 		//when
-		boolean scanResult = scanAndUpdateConfiguration.execute(context);
+		scanAndUpdateConfiguration.execute(context);
 		//then
-		assertTrue(scanResult);
 		assertEquals(PropertyUtil.getString(configRootNode.getNode("/server/version"), "active"), "true");
 	}
 
@@ -75,9 +73,8 @@ public class ScanAndUpdateConfigurationTest {
 		createAdvancedConfigDefinitionNode("isAdmin", "/server", "admin", "true");
 		createConfigChildNode("admin", "false");
 		//when
-		boolean scanResult = scanAndUpdateConfiguration.execute(context);
+		scanAndUpdateConfiguration.execute(context);
 		//then
-		assertTrue(scanResult);
 		assertEquals(PropertyUtil.getString(configRootNode.getNode("server"), "admin"), "true");
 		assertTrue(PropertyUtil.getBoolean(configDefinitionsNode.getNode("isAdmin"),
 		                                   NodeTypes.Activatable.ACTIVATION_STATUS, false));

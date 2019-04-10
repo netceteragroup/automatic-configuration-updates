@@ -31,7 +31,13 @@ public class AdvancedConfigUpdatesConstants {
        * Property name.
        */
       public static final String PROPERTY_VALUE = "propertyValue";
+
+	    /**
+	     * Property scanDate.
+	     */
+	    public static final String SCAN_DATE = "scanDate";
     }
+
   }
 
   public static class Email {
