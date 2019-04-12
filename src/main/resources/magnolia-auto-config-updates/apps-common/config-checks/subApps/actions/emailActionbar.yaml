@@ -11,11 +11,6 @@ sections:
       - name: addActions
         items:
           - name: addEmail
-#TO-DO
-#    - name: runConfigChecks
-#  - name: importAction
-#    items:
-#    - name: import
   - name: email
     label: Email
     availability:

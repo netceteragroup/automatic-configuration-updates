@@ -2,11 +2,13 @@ actions:
   cancel:
     class: info.magnolia.ui.dialog.action.CancelDialogActionDefinition
   commit:
-    command: importConfigChecks
+    command: importDefinition
     class: info.magnolia.ui.dialog.action.SaveImportDialogActionDefinition
 form:
+  label: Import
   tabs:
     - name: import
+      label: Import
       fields:
         - name: name
           label: Upload CSV file

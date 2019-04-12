@@ -26,23 +26,3 @@ editEmail:
     rules:
     - name: IsNotDeletedRule
       implementationClass: info.magnolia.ui.framework.availability.IsNotDeletedRule
-# TO-DO
-#
-#
-#runConfigChecks:
-#  command: runConfigChecks
-#  icon: icon-redo
-#  class: com.netcetera.data.RunConfigurationChecksActionDefinition
-#  availability:
-#    root: true
-#import:
-#  icon: icon-import
-#  dialogName: magnolia-auto-config-updates:components/importConfigChecks
-#  class: info.magnolia.ui.framework.action.OpenCreateDialogActionDefinition
-#  availability:
-#    multiple: false
-#    writePermissionRequired: true
-#    root: true
-#    rules:
-#    - name: IsNotDeletedRule
-#      implementationClass: info.magnolia.ui.framework.availability.IsNotDeletedRule

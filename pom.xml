@@ -45,6 +45,11 @@
       <scope>provided</scope>
     </dependency>
     <dependency>
+      <groupId>info.magnolia</groupId>
+      <artifactId>magnolia-templating</artifactId>
+      <version>${magnolia.core.version}</version>
+    </dependency>
+    <dependency>
       <groupId>info.magnolia.ui</groupId>
       <artifactId>magnolia-ui-admincentral</artifactId>
       <version>${magnolia.ui.admincentral}</version>

@@ -11,11 +11,9 @@ sections:
       - name: addActions
         items:
           - name: addDefinition
-#TO-DO
-#    - name: runConfigChecks
-#  - name: importAction
-#    items:
-#    - name: import
+      - name: importAction
+        items:
+          - name: import
   - name: definition
     label: Definition
     availability:
