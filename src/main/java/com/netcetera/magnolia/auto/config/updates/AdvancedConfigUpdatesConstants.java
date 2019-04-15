@@ -12,7 +12,8 @@ public class AdvancedConfigUpdatesConstants {
      * Node type name.
      */
     public static final String NODE_TYPE = "definition";
-    public static final String ROOT_PATH = "definitions";
+    public static final String ABS_ROOT_PATH = "/definitions";
+    public static final String REL_ROOT_PATH = "definitions";
 
     public static class Property {
       /**

@@ -29,13 +29,14 @@ import static info.magnolia.repository.RepositoryConstants.CONFIG;
 public class ScanAndUpdateConfiguration extends MgnlCommand {
 
 	private final Logger logger = LoggerFactory.getLogger(ScanAndUpdateConfiguration.class);
+	public static final String COMMAND_NAME = "scanAndUpdateConfiguration";
 
 	@Override
 	public boolean execute(Context context) throws Exception {
 
 		List<Node> listOfUpdatedNodes = new ArrayList<>();
 		Session session = getSession(AdvancedConfigUpdatesConstants.WORKSPACE);
-		Node root = session.getNode(AdvancedConfigUpdatesConstants.Definition.ROOT_PATH);
+		Node root = session.getNode(AdvancedConfigUpdatesConstants.Definition.ABS_ROOT_PATH);
 		NodeUtil.collectAllChildren(root, new NodeTypePredicate(AdvancedConfigUpdatesConstants.Definition.NODE_TYPE))
 						.forEach(configNode -> scanAndUpdate(listOfUpdatedNodes, configNode));
 

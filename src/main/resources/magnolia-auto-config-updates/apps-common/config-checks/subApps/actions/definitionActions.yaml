@@ -26,6 +26,13 @@ editDefinition:
     rules:
     - name: IsNotDeletedRule
       implementationClass: info.magnolia.ui.framework.availability.IsNotDeletedRule
+scanAndUpdateConfiguration:
+  command: scanAndUpdateConfiguration
+  label: Run a scan
+  icon: icon-redo
+  class: com.netcetera.magnolia.auto.config.updates.actions.ScanAndUpdateConfigurationActionDefinition
+  availability:
+    root: true
 import:
   icon: icon-import
   dialogName: magnolia-auto-config-updates:components/importDefinition

@@ -11,6 +11,7 @@ sections:
       - name: addActions
         items:
           - name: addDefinition
+          - name: scanAndUpdateConfiguration
       - name: importAction
         items:
           - name: import

@@ -40,7 +40,7 @@ public class ImportConfigCommandTest {
     context.addSession(AdvancedConfigUpdatesConstants.WORKSPACE, advancedConfigUpdatesSession);
 
     MockNode rootNode = new MockNode(advancedConfigUpdatesSession);
-    definitionNode = new MockNode(AdvancedConfigUpdatesConstants.Definition.ROOT_PATH);
+    definitionNode = new MockNode(AdvancedConfigUpdatesConstants.Definition.REL_ROOT_PATH);
     definitionNode.setParent(rootNode);
     rootNode.addNode(definitionNode);
 

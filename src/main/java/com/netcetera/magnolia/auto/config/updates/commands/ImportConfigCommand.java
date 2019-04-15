@@ -42,7 +42,7 @@ public class ImportConfigCommand extends JcrImportCommand {
 
   private void createNodes() throws RepositoryException {
     Node definitionsNode =
-        cmsfn.nodeByPath("/" + AdvancedConfigUpdatesConstants.Definition.ROOT_PATH, AdvancedConfigUpdatesConstants.WORKSPACE);
+        cmsfn.nodeByPath(AdvancedConfigUpdatesConstants.Definition.ABS_ROOT_PATH, AdvancedConfigUpdatesConstants.WORKSPACE);
     String line;
     String splitBy = ",";
     try {

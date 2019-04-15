@@ -40,7 +40,7 @@ public class ScanAndUpdateConfigurationTest {
 		configRootNode = new MockNode(configSession);
 		MockNode configDefinitionRoot = new MockNode(advancedConfigUpdatesWorkspace);
 
-		configDefinitionsNode = new MockNode(AdvancedConfigUpdatesConstants.Definition.ROOT_PATH);
+		configDefinitionsNode = new MockNode(AdvancedConfigUpdatesConstants.Definition.REL_ROOT_PATH);
 		configDefinitionsNode.setParent(configDefinitionRoot);
 		configDefinitionRoot.addNode(configDefinitionsNode);
 
