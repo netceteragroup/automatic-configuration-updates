@@ -1,6 +1,7 @@
 package com.netcetera.magnolia.auto.config.updates.commands;
 
 import com.netcetera.magnolia.auto.config.updates.AdvancedConfigUpdatesConstants;
+import com.netcetera.magnolia.auto.config.updates.util.MailUtil;
 import com.netcetera.magnolia.auto.config.updates.util.ContentUtil;
 import info.magnolia.commands.MgnlCommand;
 import info.magnolia.context.Context;
@@ -40,9 +41,10 @@ public class ScanAndUpdateConfiguration extends MgnlCommand {
 		NodeUtil.collectAllChildren(root, new NodeTypePredicate(AdvancedConfigUpdatesConstants.Definition.NODE_TYPE))
 						.forEach(configNode -> scanAndUpdate(listOfUpdatedNodes, configNode));
 
-//		if (!nodes.isEmpty()) {
-//			//send the email(s)
-//		}
+		if (!listOfUpdatedNodes.isEmpty()) {
+      MailUtil.setListOfUpdatedNodes(listOfUpdatedNodes);
+      MailUtil.sendMails(session.getNode(AdvancedConfigUpdatesConstants.Email.ABS_ROOT_PATH));
+		}
 		return listOfUpdatedNodes.isEmpty();
 	}
 
@@ -61,7 +63,7 @@ public class ScanAndUpdateConfiguration extends MgnlCommand {
 				PropertyUtil.setProperty(configDefinition, AdvancedConfigUpdatesConstants.Definition.Property.SCAN_DATE,
 				                         Calendar.getInstance());
 				getSession(RepositoryConstants.CONFIG).save();
-				listOfUpdatedNodes.add(configNode);
+				listOfUpdatedNodes.add(configDefinition);
 			} catch (RepositoryException e) {
 				logger.debug("Could not get node for path {}. Reason {}", path, e.getMessage());
 			}

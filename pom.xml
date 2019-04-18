@@ -31,6 +31,7 @@
     <magnolia.core.version>5.7</magnolia.core.version>
     <magnolia.ui.admincentral>5.7.2</magnolia.ui.admincentral>
     <magnolia.ui.contentapp>5.7.2</magnolia.ui.contentapp>
+    <magnolia.module.mail>5.5.1</magnolia.module.mail>
 
     <!-- JUnit -->
     <junit.jupiter.version>5.4.0</junit.jupiter.version>
@@ -58,6 +59,11 @@
       <groupId>info.magnolia.ui</groupId>
       <artifactId>magnolia-ui-contentapp</artifactId>
       <version>${magnolia.ui.contentapp}</version>
+    </dependency>
+    <dependency>
+      <groupId>info.magnolia</groupId>
+      <artifactId>magnolia-module-mail</artifactId>
+      <version>${magnolia.module.mail}</version>
     </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>

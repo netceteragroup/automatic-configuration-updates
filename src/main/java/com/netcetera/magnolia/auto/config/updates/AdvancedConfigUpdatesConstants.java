@@ -46,7 +46,8 @@ public class AdvancedConfigUpdatesConstants {
      * Node type name.
      */
     public static final String NODE_TYPE = "email";
-    public static final String ROOT_PATH = "emails";
+    public static final String REL_ROOT_PATH = "emails";
+    public static final String ABS_ROOT_PATH = "/emails";
 
     public static class Property {
       /**
