@@ -27,14 +27,17 @@ public class MailUtil {
   /**
    * Finds all emails and calls {@link MailUtil#sendMail(Node)}.
    * @param root of all email node types.
+   * @return is all email sent.
    */
-  public static void sendMails(Node root) throws RepositoryException {
+  public static boolean sendMails(Node root)  {
     try {
-      logger.debug("Getting emails from path " + root.getPath());
+      logger.debug("Getting emails.");
       NodeUtil.collectAllChildren(root, new NodeTypePredicate(AdvancedConfigUpdatesConstants.Email.NODE_TYPE))
         .forEach(MailUtil::sendMail);
+      return true;
     } catch (RepositoryException e) {
-      logger.error("Cannot retrieve emails from path " + root.getPath());
+      logger.error("Cannot retrieve emails. Reason {}", e.getMessage());
+      return false;
     }
   }
 
