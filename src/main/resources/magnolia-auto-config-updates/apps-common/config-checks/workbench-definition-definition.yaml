@@ -15,8 +15,9 @@ contentViews:
         label: Property Value
         propertyName: propertyValue
         class: info.magnolia.ui.workbench.column.definition.PropertyColumnDefinition
-      - name: status
+      - name: activationStatus
         label: Status
+        propertyName: activationStatus
         formatterClass: info.magnolia.ui.workbench.column.StatusColumnFormatter
         width: 46
         class: info.magnolia.ui.workbench.column.definition.StatusColumnDefinition
@@ -41,7 +42,8 @@ contentViews:
         label: Property Value
         propertyName: propertyValue
         class: info.magnolia.ui.workbench.column.definition.PropertyColumnDefinition
-      - name: status
+      - name: activationStatus
+        propertyName: activationStatus
         label: Status
         formatterClass: info.magnolia.ui.workbench.column.StatusColumnFormatter
         width: 46
@@ -67,7 +69,8 @@ contentViews:
         label: Property Value
         propertyName: propertyValue
         class: info.magnolia.ui.workbench.column.definition.PropertyColumnDefinition
-      - name: status
+      - name: activationStatus
+        propertyName: activationStatus
         label: Status
         formatterClass: info.magnolia.ui.workbench.column.StatusColumnFormatter
         width: 46

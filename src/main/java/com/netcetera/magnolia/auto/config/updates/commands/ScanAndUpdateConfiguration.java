@@ -63,6 +63,7 @@ public class ScanAndUpdateConfiguration extends MgnlCommand {
 				PropertyUtil.setProperty(configDefinition, AdvancedConfigUpdatesConstants.Definition.Property.SCAN_DATE,
 				                         Calendar.getInstance());
 				getSession(RepositoryConstants.CONFIG).save();
+				getSession(AdvancedConfigUpdatesConstants.WORKSPACE).save();
 				listOfUpdatedNodes.add(configDefinition);
 			} catch (RepositoryException e) {
 				logger.debug("Could not get node for path {}. Reason {}", path, e.getMessage());
