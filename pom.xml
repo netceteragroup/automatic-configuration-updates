@@ -11,7 +11,7 @@
 
   <groupId>com.netcetera</groupId>
   <artifactId>magnolia-auto-config-updates</artifactId>
-  <version>0.0.1</version>
+  <version>0.0.2-SNAPSHOT</version>
 
   <name>magnolia-auto-config-updates</name>
   <description>Automatic configuration updates for Magnolia Installations.</description>
@@ -19,7 +19,7 @@
   <scm>
     <connection>scm:git:https://github.com/netceteragroup/magnolia-auto-config-updates.git</connection>
     <url>https://github.com/netceteragroup/magnolia-auto-config-updates.git</url>
-    <tag>magnolia-auto-config-updates-0.0.1</tag>
+    <tag>HEAD</tag>
   </scm>
 
   <!-- Maven build properties -->
