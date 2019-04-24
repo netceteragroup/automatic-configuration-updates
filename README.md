@@ -1,10 +1,10 @@
 # magnolia-auto-config-updates
-Automatic configuration updates for Magnolia installations
+Automatic configuration updates for Magnolia installations.
 
 This project allows the user to automatically check and repair configuration settings and ensure their correctness pre 
 and post deployment for Test|Stage|Prod environments.
 
-###Getting started
+### Getting started
 
 1. Add a dependency to your project's pom.xml
 
@@ -32,9 +32,9 @@ level:
 
 ### Using the app
 
-The application consists of two sub-apps: Definitions and Email. In the definitions sub-app you can easily define 
-the configurations that need to be updated or repaired. In the email sub-app you can add email addresses which users will 
-be informed when there is a new configuration update. The configuration updates will be applied in the Config app by 
+The application consists of two sub-apps: Definitions and Emails. In the definitions sub-app you can easily define 
+the configurations that need to be updated or repaired. In the emails sub-app you can add email addresses whose users will 
+be informed when there is a new configuration update. The configuration updates will be applied in the Configuration app by 
 clicking on the Run a Scan action in the actionbar, available on a root level.
 
-When adding a definition the path field should not start with "/".
+When adding a definition, the path field should not start with "/".
