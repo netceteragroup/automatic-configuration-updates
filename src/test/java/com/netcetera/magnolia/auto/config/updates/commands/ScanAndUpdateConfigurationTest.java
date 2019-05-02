@@ -44,6 +44,11 @@ public class ScanAndUpdateConfigurationTest {
 		configDefinitionsNode.setParent(configDefinitionRoot);
 		configDefinitionRoot.addNode(configDefinitionsNode);
 
+		MockNode emailNode =  new MockNode(AdvancedConfigUpdatesConstants.Email.REL_ROOT_PATH);
+		emailNode.setParent(configDefinitionRoot);
+		configDefinitionRoot.addNode(emailNode);
+
+
 		MgnlContext.setInstance(context);
 	}
 
