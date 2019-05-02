@@ -5,6 +5,7 @@ import com.netcetera.magnolia.auto.config.updates.AdvancedConfigUpdatesConstants
 import info.magnolia.importexport.command.JcrImportCommand;
 import info.magnolia.jcr.util.NodeUtil;
 import info.magnolia.templating.functions.TemplatingFunctions;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import info.magnolia.context.Context;
@@ -44,15 +45,14 @@ public class ImportConfigCommand extends JcrImportCommand {
     Node definitionsNode =
         cmsfn.nodeByPath(AdvancedConfigUpdatesConstants.Definition.ABS_ROOT_PATH, AdvancedConfigUpdatesConstants.WORKSPACE);
     String line;
-    String splitBy = ",";
     try {
       BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(getStream()));
       while ((line = bufferedReader.readLine()) != null) {
-        String[] nodeProperties = line.split(splitBy);
+        String[] nodeProperties = StringUtils.split(line, ",");
         createNodeAndSetProperties(definitionsNode, nodeProperties);
       }
     } catch (IOException e) {
-      logger.error("Was not able to read from file.");
+      logger.error("Error while reading the file. Reason: {}", e.getMessage());
     }
     definitionsNode.getSession().save();
     logger.debug("New config definition nodes are successfully created and saved on path '{}'.",
@@ -60,7 +60,6 @@ public class ImportConfigCommand extends JcrImportCommand {
   }
 
   private void createNodeAndSetProperties(Node definitionsNode, String[] nodeProperties) throws RepositoryException {
-
     Node definitionNode =
       NodeUtil.createPath(definitionsNode, nodeProperties[0], AdvancedConfigUpdatesConstants.Definition.NODE_TYPE);
     definitionNode.setProperty(AdvancedConfigUpdatesConstants.Definition.Property.NAME, nodeProperties[0].trim());
