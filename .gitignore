@@ -20,3 +20,6 @@ target/
 .idea/workspace.xml
 .idea/uiDesigner.xml
 *.iml
+
+#Coverals
+.coveralls.yml
