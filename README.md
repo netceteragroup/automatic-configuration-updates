@@ -5,7 +5,7 @@ This project allows the user to automatically check and repair configuration set
 and post deployment for Test|Stage|Prod environments.
 
 [![Build Status](https://img.shields.io/travis/netceteragroup/magnolia-auto-config-updates/master.svg?style=flat-square)](https://travis-ci.org/netceteragroup/magnolia-auto-config-updates)
-[![Coverage Status](https://img.shields.io/coveralls/netceteragroup/magnolia-auto-config-updates/master.svg?style=flat-square)](https://coveralls.io/github/netceteragroup/magnolia-auto-config-updates?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/netceteragroup/magnolia-auto-config-updates/badge.svg)](https://coveralls.io/github/netceteragroup/magnolia-auto-config-updates)
 
 ### Getting started
 
