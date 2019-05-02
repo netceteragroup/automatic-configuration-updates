@@ -50,7 +50,8 @@ public class ScanAndUpdateConfiguration extends MgnlCommand {
 
 	private void scanAndUpdate(List<Node> listOfUpdatedNodes, Node configDefinition) {
 		String path = PropertyUtil.getString(configDefinition, AdvancedConfigUpdatesConstants.Definition.Property.PATH);
-		Node configNode = getOrCreateNodeInConfigWorkspaceGiven(path);
+		Node configNode = ContentUtil.getOrCreateChildNode(SessionUtil.getNode(CONFIG, "/"),
+		                                                   path, NodeTypes.Content.NAME);
 		String propertyName = PropertyUtil.getString(configDefinition,
 		                                            AdvancedConfigUpdatesConstants.Definition.Property.PROPERTY_NAME);
 		String propertyValue = PropertyUtil.getString(configDefinition,
@@ -73,16 +74,6 @@ public class ScanAndUpdateConfiguration extends MgnlCommand {
 
 	private boolean shouldUpdateConfiguration(Node configNode, String propertyName, String propertyValue) {
 		return configNode != null && !propertyValue.equals(PropertyUtil.getString(configNode, propertyName));
-	}
-
-	private Node getOrCreateNodeInConfigWorkspaceGiven(String path) {
-		try {
-			return ContentUtil.getOrCreateChildNode(SessionUtil.getNode(CONFIG, "/"),
-			                                        path, NodeTypes.Content.NAME);
-		} catch (RepositoryException e) {
-			logger.error("Could not get or create node given path {}. Reason {}", path, e.getMessage());
-			return null;
-		}
 	}
 
 	private Session getSession(String name) throws RepositoryException {

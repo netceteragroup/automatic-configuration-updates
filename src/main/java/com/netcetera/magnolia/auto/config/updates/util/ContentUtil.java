@@ -1,8 +1,6 @@
 package com.netcetera.magnolia.auto.config.updates.util;
 
-import info.magnolia.jcr.util.NodeTypes;
 import info.magnolia.jcr.util.NodeUtil;
-import info.magnolia.jcr.util.SessionUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,16 +21,19 @@ public class ContentUtil {
 	 * @param parentNode parent node
 	 * @param nodeName   name of the (potentially new) node
 	 * @param nodeType   JCR primary node type name
-	 * @return node
-	 * @throws RepositoryException if that fails
+	 * @return node or null if an error happens
 	 */
-	public static Node getOrCreateChildNode(Node parentNode, String nodeName, String nodeType)
-					throws RepositoryException {
+	public static Node getOrCreateChildNode(Node parentNode, String nodeName, String nodeType) {
 		Node childNode;
-		if (parentNode.hasNode(nodeName)) {
-			childNode = parentNode.getNode(nodeName);
-		} else {
-			childNode = NodeUtil.createPath(parentNode, nodeName, nodeType, true);
+		try {
+			if (parentNode.hasNode(nodeName)) {
+				childNode = parentNode.getNode(nodeName);
+			} else {
+				childNode = NodeUtil.createPath(parentNode, nodeName, nodeType, true);
+			}
+		} catch (RepositoryException e) {
+			logger.error("Could not get or create node given path {}. Reason {}", nodeName, e.getMessage());
+			return null;
 		}
 
 		logger.debug("Returning {} child node '{}'.", childNode.isNew() ? "new" : "existing", nodeName);
