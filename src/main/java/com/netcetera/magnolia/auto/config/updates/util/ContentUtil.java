@@ -16,7 +16,7 @@ public class ContentUtil {
 	}
 
 	/**
-	 * Gets from or creates for parent node a child node of given type and type.
+	 * Gets from or creates for parent node a child node of given name and type.
 	 *
 	 * @param parentNode parent node
 	 * @param nodeName   name of the (potentially new) node
