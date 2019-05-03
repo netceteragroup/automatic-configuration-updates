@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 import javax.jcr.Node;
 import javax.jcr.RepositoryException;
 
-public class ContentUtil {
+public final class ContentUtil {
 
 	private static final Logger logger = LoggerFactory.getLogger(ContentUtil.class);
 
