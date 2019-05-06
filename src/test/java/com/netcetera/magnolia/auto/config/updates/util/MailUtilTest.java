@@ -1,6 +1,6 @@
 package com.netcetera.magnolia.auto.config.updates.util;
 
-import com.netcetera.magnolia.auto.config.updates.AdvancedConfigUpdatesConstants;
+import com.netcetera.magnolia.auto.config.updates.apps.AdvancedConfigUpdates;
 import info.magnolia.context.MgnlContext;
 import info.magnolia.module.mail.MailModule;
 import info.magnolia.module.mail.MgnlMailFactory;
@@ -49,16 +49,16 @@ public class MailUtilTest {
   @BeforeEach
   void setup() {
     updateConfigurationNodes = new ArrayList<>();
-    MockSession advancedConfigUpdatesWorkspace = new MockSession(AdvancedConfigUpdatesConstants.WORKSPACE);
+    MockSession advancedConfigUpdatesWorkspace = new MockSession(AdvancedConfigUpdates.WORKSPACE);
     context = new MockWebContext();
-    context.addSession(AdvancedConfigUpdatesConstants.WORKSPACE, advancedConfigUpdatesWorkspace);
+    context.addSession(AdvancedConfigUpdates.WORKSPACE, advancedConfigUpdatesWorkspace);
 
     MockNode rootNode = new MockNode(advancedConfigUpdatesWorkspace);
-    definitionNode = new MockNode(AdvancedConfigUpdatesConstants.Definition.REL_ROOT_PATH);
+    definitionNode = new MockNode(AdvancedConfigUpdates.Definition.REL_ROOT_PATH);
     definitionNode.setParent(rootNode);
     rootNode.addNode(definitionNode);
 
-    emailNode = new MockNode(AdvancedConfigUpdatesConstants.Email.REL_ROOT_PATH);
+    emailNode = new MockNode(AdvancedConfigUpdates.Email.REL_ROOT_PATH);
     emailNode.setParent(rootNode);
     rootNode.addNode(emailNode);
 
@@ -89,10 +89,10 @@ public class MailUtilTest {
   private void createDefinitionNode()
       throws Exception {
     MockNode definitionChildNode = new MockNode(DEFINITION_NAME);
-    definitionChildNode.setPrimaryType(AdvancedConfigUpdatesConstants.Definition.NODE_TYPE);
-    definitionChildNode.setProperty(AdvancedConfigUpdatesConstants.Definition.Property.PATH, PATH);
-    definitionChildNode.setProperty(AdvancedConfigUpdatesConstants.Definition.Property.PROPERTY_NAME, PROPERY_NAME);
-    definitionChildNode.setProperty(AdvancedConfigUpdatesConstants.Definition.Property.PROPERTY_VALUE, PROPERY_VALUE);
+    definitionChildNode.setPrimaryType(AdvancedConfigUpdates.Definition.NODE_TYPE);
+    definitionChildNode.setProperty(AdvancedConfigUpdates.Definition.Property.PATH, PATH);
+    definitionChildNode.setProperty(AdvancedConfigUpdates.Definition.Property.PROPERTY_NAME, PROPERY_NAME);
+    definitionChildNode.setProperty(AdvancedConfigUpdates.Definition.Property.PROPERTY_VALUE, PROPERY_VALUE);
 
     definitionChildNode.setParent(definitionNode);
     definitionNode.addNode(definitionChildNode);
@@ -100,9 +100,9 @@ public class MailUtilTest {
 
   private void createEmailNode () throws RepositoryException {
     MockNode emailChildNode = new MockNode(EMAIL_NAME);
-    emailChildNode.setPrimaryType(AdvancedConfigUpdatesConstants.Email.NODE_TYPE);
-    emailChildNode.setProperty(AdvancedConfigUpdatesConstants.Email.Property.NAME, EMAIL_NAME);
-    emailChildNode.setProperty(AdvancedConfigUpdatesConstants.Email.Property.EMAIL, EMAIL);
+    emailChildNode.setPrimaryType(AdvancedConfigUpdates.Email.NODE_TYPE);
+    emailChildNode.setProperty(AdvancedConfigUpdates.Email.Property.NAME, EMAIL_NAME);
+    emailChildNode.setProperty(AdvancedConfigUpdates.Email.Property.EMAIL, EMAIL);
 
     emailChildNode.setParent(emailNode);
     emailNode.addNode(emailChildNode);

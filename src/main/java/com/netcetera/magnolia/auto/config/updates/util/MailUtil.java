@@ -1,6 +1,6 @@
 package com.netcetera.magnolia.auto.config.updates.util;
 
-import com.netcetera.magnolia.auto.config.updates.AdvancedConfigUpdatesConstants;
+import com.netcetera.magnolia.auto.config.updates.apps.AdvancedConfigUpdates;
 import com.netcetera.magnolia.auto.config.updates.commands.ScanAndUpdateConfiguration;
 import info.magnolia.jcr.predicate.NodeTypePredicate;
 import info.magnolia.jcr.util.NodeUtil;
@@ -32,7 +32,7 @@ public class MailUtil {
   public static boolean sendMails(Node root)  {
     try {
       logger.debug("Getting emails.");
-      NodeUtil.collectAllChildren(root, new NodeTypePredicate(AdvancedConfigUpdatesConstants.Email.NODE_TYPE))
+      NodeUtil.collectAllChildren(root, new NodeTypePredicate(AdvancedConfigUpdates.Email.NODE_TYPE))
         .forEach(MailUtil::sendMail);
       return true;
     } catch (RepositoryException e) {

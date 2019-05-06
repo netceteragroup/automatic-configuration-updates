@@ -1,6 +1,6 @@
 package com.netcetera.magnolia.auto.config.updates.commands;
 
-import com.netcetera.magnolia.auto.config.updates.AdvancedConfigUpdatesConstants;
+import com.netcetera.magnolia.auto.config.updates.apps.AdvancedConfigUpdates;
 import info.magnolia.context.MgnlContext;
 import info.magnolia.jcr.util.NodeTypes;
 import info.magnolia.jcr.util.PropertyUtil;
@@ -31,20 +31,20 @@ public class ScanAndUpdateConfigurationTest {
 
 	@BeforeEach
 	void setup() {
-		MockSession advancedConfigUpdatesWorkspace = new MockSession(AdvancedConfigUpdatesConstants.WORKSPACE);
+		MockSession advancedConfigUpdatesWorkspace = new MockSession(AdvancedConfigUpdates.WORKSPACE);
 		MockSession configSession = new MockSession(RepositoryConstants.CONFIG);
 		context = new MockWebContext();
 		scanAndUpdateConfiguration = new ScanAndUpdateConfiguration();
-		context.addSession(AdvancedConfigUpdatesConstants.WORKSPACE, advancedConfigUpdatesWorkspace);
+		context.addSession(AdvancedConfigUpdates.WORKSPACE, advancedConfigUpdatesWorkspace);
 		context.addSession(RepositoryConstants.CONFIG, configSession);
 		configRootNode = new MockNode(configSession);
 		MockNode configDefinitionRoot = new MockNode(advancedConfigUpdatesWorkspace);
 
-		configDefinitionsNode = new MockNode(AdvancedConfigUpdatesConstants.Definition.REL_ROOT_PATH);
+		configDefinitionsNode = new MockNode(AdvancedConfigUpdates.Definition.REL_ROOT_PATH);
 		configDefinitionsNode.setParent(configDefinitionRoot);
 		configDefinitionRoot.addNode(configDefinitionsNode);
 
-		MockNode emailNode =  new MockNode(AdvancedConfigUpdatesConstants.Email.REL_ROOT_PATH);
+		MockNode emailNode =  new MockNode(AdvancedConfigUpdates.Email.REL_ROOT_PATH);
 		emailNode.setParent(configDefinitionRoot);
 		configDefinitionRoot.addNode(emailNode);
 
@@ -102,10 +102,10 @@ public class ScanAndUpdateConfigurationTest {
 	private void createAdvancedConfigDefinitionNode(String name, String path, String propertyName,
 	                                                String propertyValue) throws RepositoryException {
 		MockNode configDefChildNode = new MockNode(name);
-		configDefChildNode.setPrimaryType(AdvancedConfigUpdatesConstants.Definition.NODE_TYPE);
-		configDefChildNode.setProperty(AdvancedConfigUpdatesConstants.Definition.Property.PATH, path);
-		configDefChildNode.setProperty(AdvancedConfigUpdatesConstants.Definition.Property.PROPERTY_NAME, propertyName);
-		configDefChildNode.setProperty(AdvancedConfigUpdatesConstants.Definition.Property.PROPERTY_VALUE, propertyValue);
+		configDefChildNode.setPrimaryType(AdvancedConfigUpdates.Definition.NODE_TYPE);
+		configDefChildNode.setProperty(AdvancedConfigUpdates.Definition.Property.PATH, path);
+		configDefChildNode.setProperty(AdvancedConfigUpdates.Definition.Property.PROPERTY_NAME, propertyName);
+		configDefChildNode.setProperty(AdvancedConfigUpdates.Definition.Property.PROPERTY_VALUE, propertyValue);
 		configDefChildNode.setParent(this.configDefinitionsNode);
 		this.configDefinitionsNode.addNode(configDefChildNode);
 	}

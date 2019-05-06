@@ -1,6 +1,6 @@
 package com.netcetera.magnolia.auto.config.updates.commands;
 
-import com.netcetera.magnolia.auto.config.updates.AdvancedConfigUpdatesConstants;
+import com.netcetera.magnolia.auto.config.updates.apps.AdvancedConfigUpdates;
 import com.netcetera.magnolia.auto.config.updates.util.MailUtil;
 import com.netcetera.magnolia.auto.config.updates.util.ContentUtil;
 import info.magnolia.commands.MgnlCommand;
@@ -36,35 +36,35 @@ public class ScanAndUpdateConfiguration extends MgnlCommand {
 	public boolean execute(Context context) throws Exception {
 
 		List<Node> listOfUpdatedNodes = new ArrayList<>();
-		Session session = getSession(AdvancedConfigUpdatesConstants.WORKSPACE);
-		Node root = session.getNode(AdvancedConfigUpdatesConstants.Definition.ABS_ROOT_PATH);
-		NodeUtil.collectAllChildren(root, new NodeTypePredicate(AdvancedConfigUpdatesConstants.Definition.NODE_TYPE))
+		Session session = getSession(AdvancedConfigUpdates.WORKSPACE);
+		Node root = session.getNode(AdvancedConfigUpdates.Definition.ABS_ROOT_PATH);
+		NodeUtil.collectAllChildren(root, new NodeTypePredicate(AdvancedConfigUpdates.Definition.NODE_TYPE))
 						.forEach(configNode -> scanAndUpdate(listOfUpdatedNodes, configNode));
 
 		if (!listOfUpdatedNodes.isEmpty()) {
       MailUtil.setListOfUpdatedNodes(listOfUpdatedNodes);
-      MailUtil.sendMails(session.getNode(AdvancedConfigUpdatesConstants.Email.ABS_ROOT_PATH));
+      MailUtil.sendMails(session.getNode(AdvancedConfigUpdates.Email.ABS_ROOT_PATH));
 		}
 		return listOfUpdatedNodes.isEmpty();
 	}
 
 	private void scanAndUpdate(List<Node> listOfUpdatedNodes, Node configDefinition) {
-		String path = PropertyUtil.getString(configDefinition, AdvancedConfigUpdatesConstants.Definition.Property.PATH);
+		String path = PropertyUtil.getString(configDefinition, AdvancedConfigUpdates.Definition.Property.PATH);
 		Node configNode = ContentUtil.getOrCreateChildNode(SessionUtil.getNode(CONFIG, "/"),
 		                                                   path, NodeTypes.Content.NAME);
 		String propertyName = PropertyUtil.getString(configDefinition,
-		                                            AdvancedConfigUpdatesConstants.Definition.Property.PROPERTY_NAME);
+		                                             AdvancedConfigUpdates.Definition.Property.PROPERTY_NAME);
 		String propertyValue = PropertyUtil.getString(configDefinition,
-		                                              AdvancedConfigUpdatesConstants.Definition.Property.PROPERTY_VALUE);
+		                                              AdvancedConfigUpdates.Definition.Property.PROPERTY_VALUE);
 
 		if (shouldUpdateConfiguration(configNode, propertyName, propertyValue)) {
 			try {
 				PropertyUtil.setProperty(configNode, propertyName, propertyValue);
 				PropertyUtil.setProperty(configDefinition, NodeTypes.Activatable.ACTIVATION_STATUS, true);
-				PropertyUtil.setProperty(configDefinition, AdvancedConfigUpdatesConstants.Definition.Property.SCAN_DATE,
+				PropertyUtil.setProperty(configDefinition, AdvancedConfigUpdates.Definition.Property.SCAN_DATE,
 				                         Calendar.getInstance());
 				getSession(RepositoryConstants.CONFIG).save();
-				getSession(AdvancedConfigUpdatesConstants.WORKSPACE).save();
+				getSession(AdvancedConfigUpdates.WORKSPACE).save();
 				listOfUpdatedNodes.add(configDefinition);
 			} catch (RepositoryException e) {
 				logger.debug("Could not get node for path {}. Reason {}", path, e.getMessage());

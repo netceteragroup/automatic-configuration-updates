@@ -1,6 +1,8 @@
-package com.netcetera.magnolia.auto.config.updates;
+package com.netcetera.magnolia.auto.config.updates.apps;
 
-public class AdvancedConfigUpdatesConstants {
+public final class AdvancedConfigUpdates {
+
+  private AdvancedConfigUpdates() {}
 
   /**
    * Workspace name.

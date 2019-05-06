@@ -1,12 +1,11 @@
 package com.netcetera.magnolia.auto.config.updates.util;
 
-import com.netcetera.magnolia.auto.config.updates.AdvancedConfigUpdatesConstants;
+import com.netcetera.magnolia.auto.config.updates.apps.AdvancedConfigUpdates;
 import info.magnolia.context.MgnlContext;
 import info.magnolia.jcr.util.NodeTypes;
 import info.magnolia.test.mock.MockWebContext;
 import info.magnolia.test.mock.jcr.MockNode;
 import info.magnolia.test.mock.jcr.MockSession;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -14,7 +13,6 @@ import javax.jcr.Node;
 import javax.jcr.RepositoryException;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
 
 /**
  * Test {@link ContentUtil}
@@ -26,12 +24,12 @@ public class ContentUtilTest {
 
   @BeforeEach
   void setup() {
-    MockSession advancedConfigUpdatesWorkspace = new MockSession(AdvancedConfigUpdatesConstants.WORKSPACE);
+    MockSession advancedConfigUpdatesWorkspace = new MockSession(AdvancedConfigUpdates.WORKSPACE);
     MockWebContext context = new MockWebContext();
-    context.addSession(AdvancedConfigUpdatesConstants.WORKSPACE, advancedConfigUpdatesWorkspace);
+    context.addSession(AdvancedConfigUpdates.WORKSPACE, advancedConfigUpdatesWorkspace);
 
     rootNode = new MockNode(advancedConfigUpdatesWorkspace);
-    childNode = new MockNode(AdvancedConfigUpdatesConstants.Definition.REL_ROOT_PATH);
+    childNode = new MockNode(AdvancedConfigUpdates.Definition.REL_ROOT_PATH);
     childNode.setName("childNode1");
     childNode.setParent(rootNode);
     rootNode.addNode(childNode);

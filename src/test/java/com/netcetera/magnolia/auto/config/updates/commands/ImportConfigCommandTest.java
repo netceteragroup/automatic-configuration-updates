@@ -1,6 +1,6 @@
 package com.netcetera.magnolia.auto.config.updates.commands;
 
-import com.netcetera.magnolia.auto.config.updates.AdvancedConfigUpdatesConstants;
+import com.netcetera.magnolia.auto.config.updates.apps.AdvancedConfigUpdates;
 import info.magnolia.context.MgnlContext;
 import info.magnolia.templating.functions.TemplatingFunctions;
 import info.magnolia.test.mock.MockWebContext;
@@ -38,12 +38,12 @@ public class ImportConfigCommandTest {
 
 	@BeforeEach
 	void setup() {
-		MockSession advancedConfigUpdatesSession = new MockSession(AdvancedConfigUpdatesConstants.WORKSPACE);
+		MockSession advancedConfigUpdatesSession = new MockSession(AdvancedConfigUpdates.WORKSPACE);
 		context = new MockWebContext();
-		context.addSession(AdvancedConfigUpdatesConstants.WORKSPACE, advancedConfigUpdatesSession);
+		context.addSession(AdvancedConfigUpdates.WORKSPACE, advancedConfigUpdatesSession);
 
 		MockNode rootNode = new MockNode(advancedConfigUpdatesSession);
-		definitionNode = new MockNode(AdvancedConfigUpdatesConstants.Definition.REL_ROOT_PATH);
+		definitionNode = new MockNode(AdvancedConfigUpdates.Definition.REL_ROOT_PATH);
 		definitionNode.setParent(rootNode);
 		rootNode.addNode(definitionNode);
 
@@ -77,11 +77,11 @@ public class ImportConfigCommandTest {
 
 			assertNotNull(definitionNode.getNode(path));
 			assertEquals(nodeProperties[1].trim(), getDefinitionProperty(definitionNode, path,
-			                                                             AdvancedConfigUpdatesConstants.Definition.Property.PATH));
+			                                                             AdvancedConfigUpdates.Definition.Property.PATH));
 			assertEquals(nodeProperties[2].trim(), getDefinitionProperty(definitionNode, path,
-			                                                             AdvancedConfigUpdatesConstants.Definition.Property.PROPERTY_NAME));
+			                                                             AdvancedConfigUpdates.Definition.Property.PROPERTY_NAME));
 			assertEquals(nodeProperties[3].trim(), getDefinitionProperty(definitionNode, path,
-			                                                             AdvancedConfigUpdatesConstants.Definition.Property.PROPERTY_VALUE));
+			                                                             AdvancedConfigUpdates.Definition.Property.PROPERTY_VALUE));
 		}
 	}
 

@@ -1,6 +1,6 @@
 package com.netcetera.magnolia.auto.config.updates.commands;
 
-import com.netcetera.magnolia.auto.config.updates.AdvancedConfigUpdatesConstants;
+import com.netcetera.magnolia.auto.config.updates.apps.AdvancedConfigUpdates;
 
 import info.magnolia.importexport.command.JcrImportCommand;
 import info.magnolia.jcr.util.NodeUtil;
@@ -43,7 +43,7 @@ public class ImportConfigCommand extends JcrImportCommand {
 
   private void createNodes() throws RepositoryException {
     Node definitionsNode =
-        cmsfn.nodeByPath(AdvancedConfigUpdatesConstants.Definition.ABS_ROOT_PATH, AdvancedConfigUpdatesConstants.WORKSPACE);
+        cmsfn.nodeByPath(AdvancedConfigUpdates.Definition.ABS_ROOT_PATH, AdvancedConfigUpdates.WORKSPACE);
     String line;
     try {
       BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(getStream()));
@@ -61,13 +61,13 @@ public class ImportConfigCommand extends JcrImportCommand {
 
   private void createNodeAndSetProperties(Node definitionsNode, String[] nodeProperties) throws RepositoryException {
     Node definitionNode =
-      NodeUtil.createPath(definitionsNode, nodeProperties[0], AdvancedConfigUpdatesConstants.Definition.NODE_TYPE);
-    definitionNode.setProperty(AdvancedConfigUpdatesConstants.Definition.Property.NAME, nodeProperties[0].trim());
-    definitionNode.setProperty(AdvancedConfigUpdatesConstants.Definition.Property.PATH, nodeProperties[1].trim());
-    definitionNode.setProperty(AdvancedConfigUpdatesConstants.Definition.Property.PROPERTY_NAME,
-      nodeProperties[2].trim());
-    definitionNode.setProperty(AdvancedConfigUpdatesConstants.Definition.Property.PROPERTY_VALUE,
-      nodeProperties[3].trim());
+      NodeUtil.createPath(definitionsNode, nodeProperties[0], AdvancedConfigUpdates.Definition.NODE_TYPE);
+    definitionNode.setProperty(AdvancedConfigUpdates.Definition.Property.NAME, nodeProperties[0].trim());
+    definitionNode.setProperty(AdvancedConfigUpdates.Definition.Property.PATH, nodeProperties[1].trim());
+    definitionNode.setProperty(AdvancedConfigUpdates.Definition.Property.PROPERTY_NAME,
+                               nodeProperties[2].trim());
+    definitionNode.setProperty(AdvancedConfigUpdates.Definition.Property.PROPERTY_VALUE,
+                               nodeProperties[3].trim());
   }
 
 }
