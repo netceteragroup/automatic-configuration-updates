@@ -11,6 +11,7 @@ import info.magnolia.objectfactory.Components;
 import info.magnolia.test.mock.MockWebContext;
 import info.magnolia.test.mock.jcr.MockNode;
 import info.magnolia.test.mock.jcr.MockSession;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
@@ -45,6 +46,7 @@ public class MailUtilTest {
   private MockWebContext context;
   private List<Node> updateConfigurationNodes;
   private MgnlEmail mgnlEmail;
+  private MailModule mailModule;
 
   @BeforeEach
   void setup() {
@@ -86,6 +88,21 @@ public class MailUtilTest {
     assertTrue(isEmailSent);
   }
 
+
+  /**
+   * See method name.
+   */
+  @Test
+  public void shouldThrowErrorWhenNoHandlerIfConfigured()  {
+
+    given(mailModule.getHandler()).willReturn(null);
+
+    Assertions.assertThrows(Exception.class, () -> {
+      MailUtil.sendMail(emailNode);
+    });
+  }
+
+
   private void createDefinitionNode()
       throws Exception {
     MockNode definitionChildNode = new MockNode(DEFINITION_NAME);
@@ -111,7 +128,7 @@ public class MailUtilTest {
   private void configureMailModule() {
     ComponentProvider componentProvider = mock(ComponentProvider.class);
 
-    MailModule mailModule = mock(MailModule.class);
+    mailModule = mock(MailModule.class);
     MgnlMailFactory mgnlMailFactory = mock(MgnlMailFactory.class);
     mgnlEmail = mock(MgnlEmail.class);
 

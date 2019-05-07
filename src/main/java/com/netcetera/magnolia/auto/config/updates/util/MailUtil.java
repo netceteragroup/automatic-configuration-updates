@@ -1,7 +1,6 @@
 package com.netcetera.magnolia.auto.config.updates.util;
 
 import com.netcetera.magnolia.auto.config.updates.apps.AdvancedConfigUpdates;
-import com.netcetera.magnolia.auto.config.updates.commands.ScanAndUpdateConfiguration;
 import info.magnolia.jcr.predicate.NodeTypePredicate;
 import info.magnolia.jcr.util.NodeUtil;
 import info.magnolia.jcr.util.PropertyUtil;
@@ -20,7 +19,7 @@ import java.util.stream.Collectors;
 
 public class MailUtil {
 
-  private static final Logger logger = LoggerFactory.getLogger(ScanAndUpdateConfiguration.class);
+  private static final Logger logger = LoggerFactory.getLogger(MailUtil.class);
 
   private static List<Node> listOfUpdatedNodes;
 
@@ -29,12 +28,19 @@ public class MailUtil {
    * @param root of all email node types.
    * @return is all email sent.
    */
-  public static boolean sendMails(Node root)  {
+  public static boolean sendMails(Node root) {
     try {
       logger.debug("Getting emails.");
       NodeUtil.collectAllChildren(root, new NodeTypePredicate(AdvancedConfigUpdates.Email.NODE_TYPE))
-        .forEach(MailUtil::sendMail);
+        .forEach(node -> {
+          try {
+            sendMail(node);
+          } catch (Exception e) {
+            logger.error("Failed to send email");
+          }
+        });
       return true;
+
     } catch (RepositoryException e) {
       logger.error("Cannot retrieve emails. Reason {}", e.getMessage());
       return false;
@@ -45,7 +51,7 @@ public class MailUtil {
    * Sends an email.
    * @param emailNode a node of type email.
    */
-  public static void sendMail(Node emailNode) {
+  public static void sendMail(Node emailNode) throws Exception {
     String email = PropertyUtil.getString(emailNode, "email");
     MailModule mailModule = Components.getComponent(MailModule.class);
     MgnlMailFactory mgnlMailFactory = mailModule.getFactory();
@@ -58,6 +64,7 @@ public class MailUtil {
       mailModule.getHandler().sendMail(mgnlEmail);
     } catch (Exception e) {
       logger.error("Failed to send email to " + email);
+      throw new Exception();
     }
   }
 
